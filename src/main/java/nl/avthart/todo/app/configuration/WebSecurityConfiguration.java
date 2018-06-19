@@ -15,6 +15,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/css/**", "/js/**", "/img/**").permitAll()
+				.antMatchers("/graphiql","/graphql").permitAll()
 				.anyRequest().authenticated();
 		http
 			.csrf()

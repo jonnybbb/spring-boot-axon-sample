@@ -42,7 +42,7 @@ public class Task {
 	 * 
 	 * @param command create Task
 	 */
-	@CommandHandler
+
 	public Task(CreateTaskCommand command) {
 		apply(new TaskCreatedEvent(command.getId(), command.getUsername(), command.getTitle()));
 	}
@@ -50,46 +50,7 @@ public class Task {
 	Task() {
 	}
 
-	/**
-	 * Completes a Task.
-	 * 
-	 * @param command complete Task
-	 */
-	@CommandHandler
-	void on(CompleteTaskCommand command) {
-		apply(new TaskCompletedEvent(command.getId()));
-	}
-	
-	/**
-	 * Stars a Task.
-	 * 
-	 * @param command star Task
-	 */
-	@CommandHandler
-	void on(StarTaskCommand command) {
-		apply(new TaskStarredEvent(command.getId()));
-	}
-	
-	/**
-	 * Unstars a Task.
-	 * 
-	 * @param command unstar Task
-	 */
-	@CommandHandler
-	void on(UnstarTaskCommand command) {
-		apply(new TaskUnstarredEvent(command.getId()));
-	}
-	
-	/**
-	 * Modifies a Task title.
-	 * 
-	 * @param command modify Task title
-	 */
-	@CommandHandler
-	void on(ModifyTaskTitleCommand command) {
-		assertNotCompleted();
-		apply(new TaskTitleModifiedEvent(command.getId(), command.getTitle()));
-	}
+
 
 	@EventSourcingHandler
 	void on(TaskCreatedEvent event) {

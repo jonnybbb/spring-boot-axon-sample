@@ -1,0 +1,82 @@
+#
+#extend type Query {
+#    # Return all known Users
+#    #users: [User!]!
+#
+#    # Return the User with the specified id
+##    user(id: ID!): User!
+##    company(id: ID!): Company!
+#
+#}
+#
+#extend type Mutation {
+##     createUser(input: CreateUserInput): CreateUserPayload!
+##     updateUser(input: UpdateUserInput): UpdateUserPayload!
+#
+#}
+
+type Address {
+    street: String
+    zip: String
+    city: String
+    country: Country!
+}
+
+type Country {
+    iso: String!
+    name: String!
+}
+
+type Company {
+    id: ID!
+    name: String!
+    address: Address!
+}
+
+
+type User {
+    id: ID!
+    salutation: String
+    title:String
+    firstname: String!
+    lastname: String!
+    email:String
+    phone:String
+    homepage:String
+    image:Image
+    position:String
+    address:Address
+    company:Company!
+}
+
+input CreateUserInput {
+    salutation: String
+    title: String
+    firstname: String!
+    lastname: String!
+    email:String!
+    phone:String
+    homepage:String
+    position:String
+
+}
+
+type CreateUserPayload {
+    user: User!
+}
+
+input UpdateUserInput {
+    id: Int!
+    salutation: String
+    title: String
+    firstname: String!
+    lastname: String!
+    phone:String
+    homepage:String
+    position:String
+}
+
+
+type UpdateUserPayload {
+    user: User!
+}

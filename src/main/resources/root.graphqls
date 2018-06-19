@@ -1,0 +1,10 @@
+schema {
+    query: Query
+
+}
+
+
+# The Root Query for the application
+type Query {
+    login(username: String!, password: String!): String!
+}
